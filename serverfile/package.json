@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node serverfile/server.js",
-    "server": "nodemon serverfile/server.js",
-    "build": "npm install && npm install  --prefix frontend && npm run build --prefix frontend"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "build": "npm install --prefix backend/serverfile && npm install --prefix backend/client && npm run build --prefix backend/client"
   },
   "keywords": [],
   "author": "",
