@@ -27,10 +27,10 @@ app.use(morgan('dev'))
 
 
 //rest api creates
-// app.get('/', (req, res) => {
-//   res.send("<h1>Welcome to Chat App</h1>")
+app.get('/', (req, res) => {
+  res.send("<h1>Welcome to Chat App</h1>")
 
-// })
+})
 
 //routes
 app.use(`/api/user`, userRoutes);
