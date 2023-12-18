@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "build": "npm install --prefix serverfile && npm install --prefix backend/client && npm run build --prefix backend/client"
+    "build": "npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
