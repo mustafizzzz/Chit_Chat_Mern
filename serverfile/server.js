@@ -9,6 +9,7 @@ const userRoutes = require('./routes/userRoutes');
 const chatRoutes = require('./routes/chatRoutes');
 const messageRoutes = require('./routes/messageRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
+const path = require('path');
 
 
 //configure env
@@ -26,16 +27,31 @@ app.use(express.json())//to accept json data
 app.use(morgan('dev'))
 
 
-//rest api creates
-app.get('/', (req, res) => {
-  res.send("<h1>Welcome to Chat App</h1>")
 
-})
 
 //routes
 app.use(`/api/user`, userRoutes);
 app.use(`/api/chat`, chatRoutes);
 app.use(`/api/message`, messageRoutes);
+
+// Deployment
+const __dirname1 = path.resolve()
+console.log(':::::::::::::::', __dirname1);
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname1, '..', 'client', 'build')))
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname1, '..', 'client', "build", "index.html"))
+  })
+
+} else {
+  // rest api creates
+  app.get('/', (req, res) => {
+    res.send("<h1>Welcome to Chat App</h1>")
+
+  })
+}
+// Deployment
+
 //middleware for error
 app.use(notFound);
 app.use(errorHandler);

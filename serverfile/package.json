@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "build": "npm install  && npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
